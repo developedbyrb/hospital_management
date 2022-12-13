@@ -1,0 +1,78 @@
+<mat-card class="register-form">
+    <mat-card-title>Register</mat-card-title>
+    <form class="example-form" (ngSubmit)="submit()">
+        <mat-card-content>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. dev@example.com">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Repeat Email</mat-label>
+                <input type="email" matInput [formControl]="confirmEmailFormControl" placeholder="Ex. dev@example.com">
+                <mat-error
+                    *ngIf="confirmEmailFormControl.hasError('email') && !confirmEmailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="confirmEmailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="confirmEmailFormControl.errors?.['confirmedValidator']">
+                    Please enter a same email as above
+                </mat-error>
+            </mat-form-field>
+            <div class="example-full-width some">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="passwordFormControl.hasError('pattern')">
+                        Password must contain at least one number, one uppercase and a
+                        lowercase letter and at least 8 characters
+                    </mat-error>
+                </mat-form-field>
+                <div class="example-button-container">
+                    <span mat-fab matTooltip="Info about the action" [matTooltipPosition]="'after'" color="primary" aria-label="Example icon button with a delete icon">
+                        <mat-icon>information</mat-icon>
+                    </span>
+                </div>
+            </div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Repeat password</mat-label>
+                <input matInput [formControl]="passwordConfirmationFormControl" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="passwordConfirmationFormControl.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="passwordConfirmationFormControl.hasError('pattern')">
+                    Password must contain at least one number, one uppercase and a
+                    lowercase letter and at least 8 characters
+                </mat-error>
+                <mat-error *ngIf="passwordConfirmationFormControl.errors?.['confirmedValidator']">
+                    Please enter a same password as above
+                </mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <!-- <button mat-raised-button>Cancel</button> -->
+            <button [type]="submit" mat-raised-button color="primary">Register</button>
+        </mat-card-actions>
+    </form>
+    <div align="end" class="login-link">
+        <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Already have an Account?</a>
+    </div>
+</mat-card>

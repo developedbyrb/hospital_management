@@ -1,0 +1,44 @@
+body {
+    background-image: linear-gradient(135deg, #EE9AE5 10%, #5961F9 100%);
+}
+
+.register-form {
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    align-items: center;
+}
+
+.register-form mat-card-actions {
+    width: 100%;
+}
+
+.register-form mat-card-actions button {
+    width: 100%;
+}
+
+.example-form {
+    width: 100%;
+}
+
+.example-full-width, .example-full-width .full-width {
+    width: 95%;
+    margin: 0%;
+}
+.some {
+    display: flex;
+    margin-left: 3% !important;
+}
+.login-link, .example-button-container {
+    margin: auto;
+    text-align: center;
+}
+
+.login-link a {
+    text-decoration: none;
+    color: #5961F9;
+}
