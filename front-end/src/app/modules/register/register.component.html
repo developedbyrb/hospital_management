@@ -1,68 +1,71 @@
 <mat-card class="register-form">
     <mat-card-title>Register</mat-card-title>
-    <form class="example-form" (ngSubmit)="submit()">
+    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="submit()">
         <mat-card-content>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Email</mat-label>
-                <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. dev@example.com">
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                <input type="email" matInput formControlName="email" placeholder="Ex. dev@example.com">
+                <mat-error
+                    *ngIf="registrationForm.controls['email'].hasError('email') && !registrationForm.controls['email'].hasError('required')">
                     Please enter a valid email address
                 </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
+                <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
                     Email is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Repeat Email</mat-label>
-                <input type="email" matInput [formControl]="confirmEmailFormControl" placeholder="Ex. dev@example.com">
+                <input type="email" matInput formControlName="confirmEmail" placeholder="Ex. dev@example.com">
                 <mat-error
-                    *ngIf="confirmEmailFormControl.hasError('email') && !confirmEmailFormControl.hasError('required')">
+                    *ngIf="registrationForm.controls['confirmEmail'].hasError('email') && !registrationForm.controls['confirmEmail'].hasError('required')">
                     Please enter a valid email address
                 </mat-error>
-                <mat-error *ngIf="confirmEmailFormControl.hasError('required')">
+                <mat-error *ngIf="registrationForm.controls['confirmEmail'].hasError('required')">
                     Email is <strong>required</strong>
                 </mat-error>
-                <mat-error *ngIf="confirmEmailFormControl.errors?.['confirmedValidator']">
+                <mat-error *ngIf="registrationForm.controls['confirmEmail'].errors?.['confirmedValidator']">
                     Please enter a same email as above
                 </mat-error>
             </mat-form-field>
             <div class="example-full-width some">
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Enter your password</mat-label>
-                    <input matInput [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
+                    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                    <span class="show-psw-icon" mat-icon-button matSuffix (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    </span>
+                    <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
                         Password is <strong>required</strong>
                     </mat-error>
-                    <mat-error *ngIf="passwordFormControl.hasError('pattern')">
+                    <mat-error *ngIf="registrationForm.controls['password'].hasError('pattern')">
                         Password must contain at least one number, one uppercase and a
                         lowercase letter and at least 8 characters
                     </mat-error>
                 </mat-form-field>
                 <div class="example-button-container">
-                    <span mat-fab matTooltip="Info about the action" [matTooltipPosition]="'after'" color="primary" aria-label="Example icon button with a delete icon">
+                    <span mat-fab matTooltip=" Password must contain at least one number, one uppercase and a
+                    lowercase letter and at least 8 characters" [matTooltipPosition]="'after'" color="primary"
+                        aria-label="Example icon button with a delete icon">
                         <mat-icon>information</mat-icon>
                     </span>
                 </div>
             </div>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Repeat password</mat-label>
-                <input matInput [formControl]="passwordConfirmationFormControl" [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
+                <input matInput formControlName="confirmPassword" [type]="hide ? 'password' : 'text'">
+                <span class="show-psw-icon" mat-icon-button matSuffix (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                <mat-error *ngIf="passwordConfirmationFormControl.hasError('required')">
+                </span>
+                <mat-error *ngIf="registrationForm.controls['confirmPassword'].hasError('required')">
                     Password is <strong>required</strong>
                 </mat-error>
-                <mat-error *ngIf="passwordConfirmationFormControl.hasError('pattern')">
+                <mat-error *ngIf="registrationForm.controls['confirmPassword'].hasError('pattern')">
                     Password must contain at least one number, one uppercase and a
                     lowercase letter and at least 8 characters
                 </mat-error>
-                <mat-error *ngIf="passwordConfirmationFormControl.errors?.['confirmedValidator']">
+                <mat-error *ngIf="registrationForm.controls['confirmPassword'].errors?.['confirmedValidator']">
                     Please enter a same password as above
                 </mat-error>
             </mat-form-field>

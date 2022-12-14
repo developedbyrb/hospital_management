@@ -1,0 +1,11 @@
+<div fxLayout="row" class="snack-container">
+    <div>
+        <mat-icon [ngClass]="getIcon.icon">{{ getIcon.icon }}</mat-icon>
+    </div>
+    <div>
+        <span [ngClass]="getIcon.icon">{{data.message}}</span>
+    </div>
+    <div class="snack-container-icon">
+        <mat-icon (click)="closeSnackbar()">clear</mat-icon>
+    </div>
+</div>

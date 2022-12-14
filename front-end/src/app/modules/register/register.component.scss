@@ -3,7 +3,7 @@ body {
 }
 
 .register-form {
-    width: 50%;
+    width: 27%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -37,8 +37,10 @@ body {
     margin: auto;
     text-align: center;
 }
-
 .login-link a {
     text-decoration: none;
     color: #5961F9;
+}
+.show-psw-icon {
+    cursor: pointer;
 }
